@@ -46,6 +46,7 @@ A professional Flutter calculator app for commonly-used utilities in nuclear med
 - **Copy**: Clipboard integration with success feedback via SnackBar
 - **Info**: Context help dialog explaining usage for each calculator
 - **Theme Toggle**: Cycles through System → Light → Dark themes
+- **Enter Key Support**: Press Enter in any input field to trigger calculations
 
 ## Technical Implementation
 
@@ -68,6 +69,7 @@ lib/
 ### 🔧 Key Dependencies
 - `window_manager: ^0.5.1` - Desktop window management and minimum size constraints
 - `flutter/services.dart` - Clipboard functionality for copy operations
+- `flutter_launcher_icons: ^0.14.4` - Generate app icons for all platforms
 - Custom Material Design 3 theme generated from online Material Theme Builder
 
 ### 💡 Validation & Error Handling
@@ -83,6 +85,7 @@ lib/
 - **TextEditingController**: Proper disposal in widget lifecycle
 - **Theme Integration**: Consistent use of `Theme.of(context).colorScheme.*`
 - **Error Boundaries**: Try-catch with FormatException for user-friendly messages
+- **onSubmitted Callbacks**: TextField Enter key support for triggering calculations
 
 ### 🚀 Future Enhancements
 - Additional calculator types can be added to `appScreenWidgets` and `appScreenTitles`
@@ -94,5 +97,28 @@ lib/
 **Spine Height**: `5, 5.5` (normal) + `4` (collapsed) → `Height loss: 23.8% (severe)`
 **Change Calc**: `4` (current) + `2` (previous) → `Change: 100.0% | Delta: 2.0`
 
+## CI/CD & Build System
+
+### 🚀 GitHub Actions Workflows
+- **macOS Build**: `.github/workflows/macos-build.yml` - Automated macOS app building and packaging
+- **Windows Build**: `.github/workflows/windows-build.yml` - Windows installer creation with Inno Setup
+- **Cross-Platform**: Supports both manual triggers and automatic release creation
+- **Versioning**: Auto-updates app version from Git tags (strips 'v' prefix, adds build number)
+
+### 📦 Release Process
+1. **Triggers**: Push to main/dev/feat/hotfix branches, pull requests, GitHub releases
+2. **Version Management**: Extracts version from Git tags and updates `pubspec.yaml`
+3. **Platform Builds**: 
+   - **macOS**: Creates `.app` bundle, zips as `NM-Helper-macos.zip`
+   - **Windows**: Builds executable, creates installer with Inno Setup as `NM-Helper-Setup.exe`
+4. **Artifacts**: Uploads build artifacts and creates GitHub releases automatically
+5. **Dependencies**: Uses Flutter 3.32.6, Dart 3.8.1 with proper platform detection
+
+### 🔧 Build Tools
+- **Inno Setup**: Windows installer creation with custom icons and proper file associations
+- **macOS Packaging**: Native `.app` bundle with minimum window constraints
+- **Flutter Config**: Enables desktop platform support for both Windows and macOS
+- **Version Sync**: Maintains consistent versioning across platforms and releases
+
 ## Session Summary
-Transformed a basic calculator concept into a polished, professional Nuclear Medicine helper app with custom theming, comprehensive validation, cross-platform support, and intuitive user experience. The app successfully handles real clinical calculations with appropriate diagnostic classifications.
+Transformed a basic calculator concept into a polished, professional Nuclear Medicine helper app with custom theming, comprehensive validation, cross-platform support, intuitive user experience, and complete CI/CD automation. Added Enter key support for enhanced usability and implemented robust build pipelines for seamless macOS and Windows releases.
