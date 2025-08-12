@@ -126,6 +126,7 @@ class _ChangeCalculatorScreenState extends State<ChangeCalculatorScreen> {
           TextField(
             controller: _currentValueController,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            onSubmitted: (value) => _calculate(),
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.trending_up),
               labelText: 'Current Value',
@@ -138,6 +139,7 @@ class _ChangeCalculatorScreenState extends State<ChangeCalculatorScreen> {
           TextField(
             controller: _previousValueController,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            onSubmitted: (value) => _calculate(),
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.history),
               labelText: 'Previous Value',

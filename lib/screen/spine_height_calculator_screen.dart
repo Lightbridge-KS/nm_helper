@@ -167,6 +167,7 @@ class _SpineHeightCalculatorScreenState
           TextField(
             controller: _normalHeightController,
             keyboardType: TextInputType.number,
+            onSubmitted: (value) => _calculate(),
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.sentiment_very_satisfied),
               labelText: 'Normal Height',
@@ -179,6 +180,7 @@ class _SpineHeightCalculatorScreenState
           TextField(
             controller: _collapsedHeightController,
             keyboardType: TextInputType.number,
+            onSubmitted: (value) => _calculate(),
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.sentiment_dissatisfied),
               labelText: 'Collapsed Height',
