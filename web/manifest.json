@@ -1,6 +1,6 @@
 {
-    "name": "nm_helper",
-    "short_name": "nm_helper",
+    "name": "NM Helper",
+    "short_name": "NMH",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
