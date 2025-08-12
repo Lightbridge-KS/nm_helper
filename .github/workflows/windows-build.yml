@@ -25,6 +25,9 @@ on:
     types: [published]
   workflow_dispatch: 
 
+permissions:
+  contents: write  # This gives permission to create releases
+
 jobs:
   build-windows:
     runs-on: windows-latest
